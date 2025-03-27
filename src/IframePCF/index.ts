@@ -24,14 +24,10 @@ export class IframePCF implements ComponentFramework.StandardControl<IInputs, IO
 		// Add control initialization code
 		this.iframeelem = document.createElement("iframe");
 
-		if( context.parameters.src.raw)
-		{
-		this.iframeelem.src = context.parameters.src.raw
-		};
-		
-		this.iframeelem.width = "500";
-		this.iframeelem.height ="700";
-		this.iframeelem.frameBorder = "0";
+		this.iframeelem.src = context.parameters.src.raw ? context.parameters.src.raw : "";
+		this.iframeelem.width = context.parameters.src.height.raw ? context.parameters.src.height.raw : "500";
+		this.iframeelem.height = context.parameters.src.width.raw ? context.parameters.src.width.raw : "700"
+ 		//this.iframeelem.frameBorder = "0";
 
 		container.appendChild(this.iframeelem);
 	}
